@@ -1,11 +1,14 @@
 package org.example.app;
 
 import org.example.exception.NoSuchOptionException;
+import org.example.model.Car;
+import org.example.model.Rental;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RentalControl {
+    Rental rental = new Rental();
 
     Scanner scanner = new Scanner(System.in);
 
@@ -16,7 +19,7 @@ public class RentalControl {
             option = getOption();
             switch (option){
                 case EXIT -> System.out.println("Koniec");
-                case ADD_CAR -> System.out.println("Dodaj auto");
+                case ADD_CAR -> addCar();
                 case ADD_TRUCK -> System.out.println("Dodaj vana");
                 case ADD_MOTORCYCLE -> System.out.println("Dodaj mmotocykl");
                 case DISPLAY_CARS -> System.out.println("wyświetl samochody");
@@ -31,6 +34,11 @@ public class RentalControl {
                 default -> System.out.println("Brak wybranej opcji, spróbuj raz jeszcze");
             }
         } while (option != Option.EXIT);
+    }
+
+    private void addCar() {
+        Car car = createCar();
+        rental.addVehicle(car);
     }
 
     private Option getOption() {
@@ -52,7 +60,6 @@ public class RentalControl {
         return option;
     }
 
-
     private void printOptions() {
         System.out.println("Proszę wybrać opcję: ");
         Option[] values = Option.values();
@@ -60,6 +67,31 @@ public class RentalControl {
             System.out.println(option.toString());
         }
     }
+
+    private Car createCar(){
+        System.out.println("Marka samochodu:");
+        String make = scanner.nextLine();
+        System.out.println("Model samochodu:");
+        String model = scanner.nextLine();
+        System.out.println("Rok produkcji:");
+        int yearProduction = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Numer rejestracyjny:");
+        String registrationNumber = scanner.nextLine();
+        System.out.println("Skrzynia biegów:");
+        String transmission = scanner.nextLine();
+        System.out.println("Pojemność silnika:");
+        int engineSize = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Rodzaj paliwa:");
+        String fuelType = scanner.nextLine();
+        System.out.println("Przebieg samochodu:");
+        int kilometers = scanner.nextInt();
+        scanner.nextLine();
+        Car car = new Car(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers);
+        return car;
+    }
+
 
     private enum Option{
         EXIT(0, "Wyjście z aplikacji"),
