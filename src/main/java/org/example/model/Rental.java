@@ -20,7 +20,11 @@ public class Rental {
     }
 
     public void addVehicle(Vehicle vehicle){
-        vehicles.put(vehicle.getRegistrationNumber(), vehicle);
+        if (vehicles.containsKey(vehicle.getRegistrationNumber())){
+            System.out.println("Pojazd o podanym numerze rejestracyjnym już istanieje");
+        } else {
+            vehicles.put(vehicle.getRegistrationNumber(), vehicle);
+        }
     }
 
     public boolean removeVehicle(Vehicle vehicle){
