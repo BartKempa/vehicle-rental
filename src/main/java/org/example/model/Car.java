@@ -7,8 +7,11 @@ public class Car extends Vehicle{
     private int passengersNumber;
 
 
-    public Car(String make, String model, int yearProduction, String registrationNumber, String transmission, int engineSize, String fuelType, int kilometers) {
+    public Car(String make, String model, int yearProduction, String registrationNumber, String transmission, int engineSize, String fuelType, int kilometers, String carCategory, int doorsNumber, int passengersNumber) {
         super(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers);
+        this.carCategory = carCategory;
+        this.doorsNumber = doorsNumber;
+        this.passengersNumber = passengersNumber;
     }
 
     public String getCarCategory() {

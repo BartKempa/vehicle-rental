@@ -4,8 +4,9 @@ public class Motorcycle extends Vehicle{
     public static final String TYPE = "Motocykl";
     private String motorcycleType;
 
-    public Motorcycle(String make, String model, int yearProduction, String registrationNumber, String transmission, int engineSize, String fuelType, int kilometers) {
+    public Motorcycle(String make, String model, int yearProduction, String registrationNumber, String transmission, int engineSize, String fuelType, int kilometers, String motorcycleType) {
         super(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers);
+        this.motorcycleType = motorcycleType;
     }
 
     public String getMotorcycleType() {

@@ -1,6 +1,7 @@
 package org.example.io;
 
 import org.example.model.Car;
+import org.example.model.Motorcycle;
 import org.example.model.Truck;
 
 import java.util.Scanner;
@@ -29,18 +30,21 @@ public class DataReader {
         System.out.println("Przebieg samochodu:");
         int kilometers = scanner.nextInt();
         scanner.nextLine();
-        return new Car(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers);
+        System.out.println("Kategoria samochodu:");
+        String carCategory = scanner.nextLine();
+        System.out.println("Liczba drzwi:");
+        int doorsNumber = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Maksymalna liczba osób w samochodzie:");
+        int passengersNumber = scanner.nextInt();
+        scanner.nextLine();
+        return new Car(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers, carCategory, doorsNumber, passengersNumber);
     }
-    /*    public Truck(String make, String model, int yearProduction, String registrationNumber, String transmission, int engineSize, String fuelType, int kilometers, int passengersNumber, int loadCapacity) {
-        super(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers);
-        this.passengersNumber = passengersNumber;
-        this.loadCapacity = loadCapacity;
-    }
-    }*/
+
     public Truck createTruck(){
-        System.out.println("Marka samochodu:");
+        System.out.println("Marka vana:");
         String make = scanner.nextLine();
-        System.out.println("Model samochodu:");
+        System.out.println("Model vana:");
         String model = scanner.nextLine();
         System.out.println("Rok produkcji:");
         int yearProduction = scanner.nextInt();
@@ -66,6 +70,31 @@ public class DataReader {
         return new Truck(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers, passengersNumber, loadCapacity);
     }
 
+    public Motorcycle createMotorcycle() {
+        System.out.println("Marka motocykla:");
+        String make = scanner.nextLine();
+        System.out.println("Model motocykla:");
+        String model = scanner.nextLine();
+        System.out.println("Rok produkcji:");
+        int yearProduction = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Numer rejestracyjny:");
+        String registrationNumber = scanner.nextLine();
+        System.out.println("Skrzynia biegów:");
+        String transmission = scanner.nextLine();
+        System.out.println("Pojemność silnika:");
+        int engineSize = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Rodzaj paliwa:");
+        String fuelType = scanner.nextLine();
+        System.out.println("Przebieg motocykla:");
+        int kilometers = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Typ motocykla:");
+        String motorcycleType = scanner.nextLine();
+        return new Motorcycle(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers, motorcycleType);
+    }
+
     public int getInt(){
         try {
             return scanner.nextInt();
@@ -81,6 +110,5 @@ public class DataReader {
     public void closeScanner(){
         scanner.close();
     }
-
 
 }

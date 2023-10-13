@@ -3,7 +3,9 @@ package org.example.app;
 import org.example.exception.NoSuchOptionException;
 import org.example.io.DataReader;
 import org.example.model.Car;
+import org.example.model.Motorcycle;
 import org.example.model.Rental;
+import org.example.model.Truck;
 
 import java.util.InputMismatchException;
 
@@ -17,13 +19,10 @@ public class RentalControl {
             printOptions();
             option = getOption();
             switch (option){
-                case EXIT -> {
-                    dataReader.closeScanner();
-                    System.out.println("Koniec");
-                }
+                case EXIT -> System.out.println("Koniec");
                 case ADD_CAR -> addCar();
-                case ADD_TRUCK -> System.out.println("Dodaj vana");
-                case ADD_MOTORCYCLE -> System.out.println("Dodaj mmotocykl");
+                case ADD_TRUCK -> addTruck();
+                case ADD_MOTORCYCLE -> addMotorcycle();
                 case DISPLAY_CARS -> System.out.println("wyświetl samochody");
                 case DISPLAY_TRUCKS -> System.out.println("wyświetl vany");
                 case DISPLAY_MOTORCYCLES -> System.out.println("Wyświetl motory");
@@ -38,9 +37,31 @@ public class RentalControl {
         } while (option != Option.EXIT);
     }
 
+    private void addMotorcycle() {
+        try {
+            Motorcycle motorcycle = dataReader.createMotorcycle();
+            rental.addVehicle(motorcycle);
+        } catch (InputMismatchException e){
+            System.out.println("Nie udało się utworzyć motcykla, błędne dane");
+        }
+    }
+
+    private void addTruck() {
+        try {
+            Truck truck = dataReader.createTruck();
+            rental.addVehicle(truck);
+        } catch (InputMismatchException e) {
+            System.out.println("Nie udało się utworzyć samochodu, błędne dane");
+        }
+    }
+
     private void addCar() {
-        Car car = dataReader.createCar();
-        rental.addVehicle(car);
+        try {
+            Car car = dataReader.createCar();
+            rental.addVehicle(car);
+        } catch (InputMismatchException e) {
+            System.out.println("Nie udało się utworzyć samochodu, błędne dane");
+        }
     }
 
     private Option getOption() {
@@ -48,13 +69,12 @@ public class RentalControl {
         boolean isNumCorrect = false;
         while (!isNumCorrect){
             try {
-                int optionNumber = dataReader.getInt();
-                option = Option.getOptionFromInt(optionNumber);
+                option = Option.getOptionFromInt(dataReader.getInt());
                 isNumCorrect =true;
             } catch (NoSuchOptionException e) {
                 System.out.println(e.getMessage());
             } catch (InputMismatchException e){
-                System.err.println("Wpisano wartość, która nie jest liczbą z podanego zakresu, wybierz ponownie: ");
+                System.out.println("Wpisano wartość, która nie jest liczbą z podanego zakresu, wybierz ponownie: ");
             }
         }
         return option;
@@ -106,13 +126,11 @@ public class RentalControl {
                     ". " + description;
         }
         private static Option getOptionFromInt(int optionNumber) throws NoSuchOptionException {
-            Option option;
             try {
-                option = Option.values()[optionNumber];
+                return Option.values()[optionNumber];
             } catch (ArrayIndexOutOfBoundsException e){
                 throw new NoSuchOptionException("Brak opcji o numerze: " + optionNumber + " , wybierz ponownie.");
             }
-            return option;
         }
     }
 
