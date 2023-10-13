@@ -26,7 +26,7 @@ public class RentalControl {
                 case DISPLAY_CARS -> System.out.println("wyświetl samochody");
                 case DISPLAY_TRUCKS -> System.out.println("wyświetl vany");
                 case DISPLAY_MOTORCYCLES -> System.out.println("Wyświetl motory");
-                case DELETE_CAR -> System.out.println("usun auto");
+                case DELETE_CAR -> deleteCar();
                 case DELETE_TRUCK -> System.out.println("usuń vana");
                 case DELETE_MOTORCYCLE -> System.out.println("usuń motor");
                 case ADD_CLIENT -> System.out.println("dodaj klienta");
@@ -35,6 +35,19 @@ public class RentalControl {
                 default -> System.out.println("Brak wybranej opcji, spróbuj raz jeszcze");
             }
         } while (option != Option.EXIT);
+    }
+
+    private void deleteCar() {
+        try {
+            Car car = dataReader.createCar();
+            if (rental.deleteVehicle(car)) {
+                System.out.println("Usunięto samochód z bazy");
+            } else {
+                System.out.println("Brak danego auta w bazie");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Nie udało się utworzyć motcykla, błędne dane");
+        }
     }
 
     private void addMotorcycle() {

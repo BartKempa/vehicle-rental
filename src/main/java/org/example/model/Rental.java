@@ -1,5 +1,7 @@
 package org.example.model;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +38,13 @@ public class Rental {
         }
     }
 
-
-
+    public boolean deleteVehicle(Vehicle vehicle) {
+        if (vehicles.containsKey(vehicle.getRegistrationNumber())){
+            vehicles.remove(vehicle.getRegistrationNumber());
+            return true;
+        } else {
+            System.out.println("Pojazd o podanym numerze rejestracyjnym już istanieje");
+            return false;
+        }
+    }
 }
