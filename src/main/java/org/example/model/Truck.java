@@ -5,8 +5,10 @@ public class Truck extends Vehicle{
     private int passengersNumber;
     private int loadCapacity;
 
-    public Truck(String make, String model, int yearProduction, String registrationNumber, String transmission, int engineSize, String fuelType, int kilometers) {
+    public Truck(String make, String model, int yearProduction, String registrationNumber, String transmission, int engineSize, String fuelType, int kilometers, int passengersNumber, int loadCapacity) {
         super(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers);
+        this.passengersNumber = passengersNumber;
+        this.loadCapacity = loadCapacity;
     }
 
     public int getPassengersNumber() {
