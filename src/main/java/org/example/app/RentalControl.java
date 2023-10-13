@@ -1,16 +1,15 @@
 package org.example.app;
 
 import org.example.exception.NoSuchOptionException;
+import org.example.io.DataReader;
 import org.example.model.Car;
 import org.example.model.Rental;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class RentalControl {
     Rental rental = new Rental();
-
-    Scanner scanner = new Scanner(System.in);
+   DataReader dataReader = new DataReader();
 
     public void controlLoop(){
         Option option;
@@ -18,7 +17,10 @@ public class RentalControl {
             printOptions();
             option = getOption();
             switch (option){
-                case EXIT -> System.out.println("Koniec");
+                case EXIT -> {
+                    dataReader.closeScanner();
+                    System.out.println("Koniec");
+                }
                 case ADD_CAR -> addCar();
                 case ADD_TRUCK -> System.out.println("Dodaj vana");
                 case ADD_MOTORCYCLE -> System.out.println("Dodaj mmotocykl");
@@ -37,7 +39,7 @@ public class RentalControl {
     }
 
     private void addCar() {
-        Car car = createCar();
+        Car car = dataReader.createCar();
         rental.addVehicle(car);
     }
 
@@ -46,15 +48,13 @@ public class RentalControl {
         boolean isNumCorrect = false;
         while (!isNumCorrect){
             try {
-                int optionNumber = scanner.nextInt();
+                int optionNumber = dataReader.getInt();
                 option = Option.getOptionFromInt(optionNumber);
                 isNumCorrect =true;
             } catch (NoSuchOptionException e) {
                 System.out.println(e.getMessage());
             } catch (InputMismatchException e){
                 System.err.println("Wpisano wartość, która nie jest liczbą z podanego zakresu, wybierz ponownie: ");
-            } finally {
-                scanner.nextLine();
             }
         }
         return option;
@@ -67,31 +67,6 @@ public class RentalControl {
             System.out.println(option.toString());
         }
     }
-
-    private Car createCar(){
-        System.out.println("Marka samochodu:");
-        String make = scanner.nextLine();
-        System.out.println("Model samochodu:");
-        String model = scanner.nextLine();
-        System.out.println("Rok produkcji:");
-        int yearProduction = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Numer rejestracyjny:");
-        String registrationNumber = scanner.nextLine();
-        System.out.println("Skrzynia biegów:");
-        String transmission = scanner.nextLine();
-        System.out.println("Pojemność silnika:");
-        int engineSize = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Rodzaj paliwa:");
-        String fuelType = scanner.nextLine();
-        System.out.println("Przebieg samochodu:");
-        int kilometers = scanner.nextInt();
-        scanner.nextLine();
-        Car car = new Car(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers);
-        return car;
-    }
-
 
     private enum Option{
         EXIT(0, "Wyjście z aplikacji"),
