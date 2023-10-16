@@ -2,7 +2,7 @@ package org.example.model;
 
 import java.io.Serializable;
 
-public abstract class Vehicle implements Serializable {
+public abstract class Vehicle implements Serializable, CsvConvertible {
     private String make;
     private String model;
     private int yearProduction;
@@ -99,5 +99,5 @@ public abstract class Vehicle implements Serializable {
                 "; " + kilometers;
     }
 
-    public abstract String toCsv();
+  /*  public abstract String toCsv();*/
 }

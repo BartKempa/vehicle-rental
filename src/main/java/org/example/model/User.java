@@ -1,6 +1,6 @@
 package org.example.model;
 
-public abstract class User {
+public abstract class User implements CsvConvertible {
     private String firstName;
     private String secondName;
     private String pesel;
@@ -41,4 +41,7 @@ public abstract class User {
                 "; " + secondName + '\'' +
                 "; " + pesel;
     }
+
+
 }
+

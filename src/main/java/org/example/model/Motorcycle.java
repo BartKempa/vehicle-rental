@@ -35,4 +35,6 @@ public class Motorcycle extends Vehicle{
                 getKilometers() + ";" +
                 getMotorcycleType();
     }
+
+    public static class svConvertible
 }
