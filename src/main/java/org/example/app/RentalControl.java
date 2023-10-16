@@ -1,6 +1,7 @@
 package org.example.app;
 
 import org.example.exception.NoSuchOptionException;
+import org.example.io.ConsolePrinter;
 import org.example.io.DataReader;
 import org.example.model.Car;
 import org.example.model.Motorcycle;
@@ -12,6 +13,7 @@ import java.util.InputMismatchException;
 public class RentalControl {
     Rental rental = new Rental();
    DataReader dataReader = new DataReader();
+   ConsolePrinter printer = new ConsolePrinter();
 
     public void controlLoop(){
         Option option;
@@ -23,7 +25,7 @@ public class RentalControl {
                 case ADD_CAR -> addCar();
                 case ADD_TRUCK -> addTruck();
                 case ADD_MOTORCYCLE -> addMotorcycle();
-                case DISPLAY_CARS -> System.out.println("wyświetl samochody");
+                case DISPLAY_CARS -> System.out.println("wyswietl auta");
                 case DISPLAY_TRUCKS -> System.out.println("wyświetl vany");
                 case DISPLAY_MOTORCYCLES -> System.out.println("Wyświetl motory");
                 case DELETE_CAR -> deleteCar();
@@ -36,6 +38,8 @@ public class RentalControl {
             }
         } while (option != Option.EXIT);
     }
+
+
 
     private void deleteCar() {
         try {

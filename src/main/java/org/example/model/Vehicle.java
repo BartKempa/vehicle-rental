@@ -1,6 +1,8 @@
 package org.example.model;
 
-public abstract class Vehicle {
+import java.io.Serializable;
+
+public abstract class Vehicle implements Serializable {
     private String make;
     private String model;
     private int yearProduction;
@@ -96,4 +98,6 @@ public abstract class Vehicle {
                 "; " + fuelType +
                 "; " + kilometers;
     }
+
+    public abstract String toCsv();
 }

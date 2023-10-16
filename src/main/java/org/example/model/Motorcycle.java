@@ -22,4 +22,17 @@ public class Motorcycle extends Vehicle{
         return " " + motorcycleType +
                 "; " + super.toString();
     }
+    @Override
+    public String toCsv() {
+        return TYPE + ";" +
+                getMake() + ";" +
+                getModel() + ";" +
+                getYearProduction() + ";" +
+                getRegistrationNumber() + ";" +
+                getTransmission() + ";" +
+                getEngineSize() + ";" +
+                getFuelType() + ";" +
+                getKilometers() + ";" +
+                getMotorcycleType();
+    }
 }

@@ -45,4 +45,20 @@ public class Car extends Vehicle{
                 "; " + passengersNumber +
                 "; " + super.toString();
     }
+
+    @Override
+    public String toCsv() {
+        return TYPE + ";" +
+                getMake() + ";" +
+                getModel() + ";" +
+                getYearProduction() + ";" +
+                getRegistrationNumber() + ";" +
+                getTransmission() + ";" +
+                getEngineSize() + ";" +
+                getFuelType() + ";" +
+                getKilometers() + ";" +
+                getCarCategory() + ";" +
+                getDoorsNumber() + ";" +
+                getPassengersNumber();
+    }
 }

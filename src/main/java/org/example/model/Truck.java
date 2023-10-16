@@ -33,4 +33,18 @@ public class Truck extends Vehicle{
                 "; " + loadCapacity +
                 "; " + super.toString();
     }
+    @Override
+    public String toCsv() {
+        return TYPE + ";" +
+                getMake() + ";" +
+                getModel() + ";" +
+                getYearProduction() + ";" +
+                getRegistrationNumber() + ";" +
+                getTransmission() + ";" +
+                getEngineSize() + ";" +
+                getFuelType() + ";" +
+                getKilometers() + ";" +
+                getPassengersNumber() + ";" +
+                getLoadCapacity();
+    }
 }
