@@ -1,9 +1,6 @@
 package org.example.io;
 
-import org.example.model.Car;
-import org.example.model.Motorcycle;
-import org.example.model.Rental;
-import org.example.model.Vehicle;
+import org.example.model.*;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -38,9 +35,21 @@ public class ConsolePrinter {
         }
     }
 
+    public void printTrucks(Collection<Vehicle> vehicleCollection){
+        //Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        int counter = 0;
+        for (Vehicle vehicle : vehicleCollection) {
+            if (vehicle instanceof Truck){
+                printLine(vehicle.toString());
+                counter++;
+            }
+            if (counter == 0){
+                printLine("Brak vanów w bazie");
+            }
+        }
+    }
+
     
-
-
 
     public void printLine(String text){
         System.out.println(text);
