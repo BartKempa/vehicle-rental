@@ -3,20 +3,17 @@ package org.example.app;
 import org.example.exception.NoSuchOptionException;
 import org.example.io.ConsolePrinter;
 import org.example.io.DataReader;
-import org.example.model.Car;
-import org.example.model.Motorcycle;
-import org.example.model.Rental;
-import org.example.model.Truck;
+import org.example.model.*;
 
+import java.util.Collection;
 import java.util.InputMismatchException;
 
 public class RentalControl {
-   Rental rental = new Rental();
-   DataReader dataReader = new DataReader();
+   private Rental rental = new Rental();
+   private ConsolePrinter printer = new ConsolePrinter();
+   private DataReader dataReader = new DataReader(printer);
 
-   ConsolePrinter printer = new ConsolePrinter();
-
-    public void controlLoop(){
+   public void controlLoop(){
         Option option;
         do {
             printOptions();
@@ -26,20 +23,40 @@ public class RentalControl {
                 case ADD_CAR -> addCar();
                 case ADD_TRUCK -> addTruck();
                 case ADD_MOTORCYCLE -> addMotorcycle();
-                case DISPLAY_CARS -> System.out.println("wyswietl auta");
-                case DISPLAY_TRUCKS -> System.out.println("wyświetl vany");
-                case DISPLAY_MOTORCYCLES -> System.out.println("Wyświetl motory");
+                case DISPLAY_CARS -> printCars();
+                case DISPLAY_TRUCKS -> printTrucks();
+                case DISPLAY_MOTORCYCLES -> printMotorcycle();
                 case DELETE_CAR -> deleteCar();
                 case DELETE_TRUCK -> System.out.println("usuń vana");
                 case DELETE_MOTORCYCLE -> System.out.println("usuń motor");
                 case ADD_CLIENT -> System.out.println("dodaj klienta");
-                case DISPLAY_CLIENTS -> System.out.println("wyświel klientów");
+                case DISPLAY_CLIENTS -> printUsers();
                 case FIND_VEHICLE -> System.out.println("znajd auto");
                 default -> System.out.println("Brak wybranej opcji, spróbuj raz jeszcze");
             }
         } while (option != Option.EXIT);
     }
 
+
+    private void printMotorcycle(){
+        Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        printer.printMotorcycle(vehicleCollection);
+    }
+
+    private void printCars(){
+        Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        printer.printCars(vehicleCollection);
+    }
+
+    private void printTrucks(){
+        Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        printer.printTrucks(vehicleCollection);
+    }
+
+    private void printUsers(){
+        Collection<User> userCollection = rental.getUsers().values();
+        printer.printUsers(userCollection);
+    }
 
 
     private void deleteCar() {

@@ -36,5 +36,4 @@ public class Motorcycle extends Vehicle{
                 getMotorcycleType();
     }
 
-    public static class svConvertible
 }

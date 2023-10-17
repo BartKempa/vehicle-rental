@@ -9,6 +9,11 @@ import java.util.Scanner;
 public class DataReader {
 
     private Scanner scanner = new Scanner(System.in);
+    private ConsolePrinter printer;
+
+    public DataReader(ConsolePrinter printer) {
+        this.printer = printer;
+    }
 
     public Car createCar(){
         System.out.println("Marka samochodu:");

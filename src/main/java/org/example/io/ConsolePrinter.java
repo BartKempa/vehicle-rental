@@ -3,7 +3,6 @@ package org.example.io;
 import org.example.model.*;
 
 import java.util.Collection;
-import java.util.Collections;
 
 public class ConsolePrinter {
 
@@ -49,7 +48,7 @@ public class ConsolePrinter {
         }
     }
 
-    public void printUsers(Collection<RentalUser> userCollection){
+    public void printUsers(Collection<User> userCollection){
         int counter = 0;
         for (User user : userCollection) {
            printLine(user.toString());
@@ -62,8 +61,4 @@ public class ConsolePrinter {
     public void printLine(String text){
         System.out.println(text);
     }
-
-
-
-
 }
