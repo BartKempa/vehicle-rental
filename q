@@ -1,0 +1,137 @@
+[33mcommit 30e745da159def5cdaf13f02331f0ddde152cf4a[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/scanner[m[33m)[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 13:13:49 2023 +0200
+
+    dodanie obslugi plików do menu
+
+[33mcommit b64966e459445596c0b4b13743f4c133decd5e73[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 12:35:27 2023 +0200
+
+    import danych z pliku
+
+[33mcommit f3bc06e14595b7319ddc74c982a338d411c1794d[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 12:27:17 2023 +0200
+
+    export danych do pliku
+
+[33mcommit ceaa0c47a76f86e8a8dc6b83105b793cabc13463[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 09:33:48 2023 +0200
+
+    wyświetlanie użytkowników
+
+[33mcommit 94cc2c1aaca46257326bd62cea8f568cbe9f446b[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 09:28:48 2023 +0200
+
+    wyświetlanie vanów
+
+[33mcommit 4117518e40a15bf83cad36ab805f52ee398fdffa[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 09:21:22 2023 +0200
+
+    wyświetlanie motocykli
+
+[33mcommit c1f9103b4d251f1c7d95857596fc54340f2f7ae5[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 09:19:02 2023 +0200
+
+    wyświetlanie samochodów oso
+
+[33mcommit 6223e246a43cd40139b1c2d9b33fc836ee3ea28f[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 17 08:28:03 2023 +0200
+
+    metoda import users
+
+[33mcommit b08106235a92c8aa8c031c99ba73a50792ed6d72[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Mon Oct 16 14:42:01 2023 +0200
+
+    zapis userów do csv
+
+[33mcommit 5704be3b0583e0aaeb491852e2861690627f3eab[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Mon Oct 16 11:19:09 2023 +0200
+
+    import auta z csv
+
+[33mcommit 3c9f8cf58f587fbaf4c3b5e6560964419e0beb44[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Mon Oct 16 09:41:39 2023 +0200
+
+    eksport pojazdów pliku csv
+
+[33mcommit 444e657a7fbbb488ce8627dd83a40a53b0fe4230[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Fri Oct 13 12:38:37 2023 +0200
+
+    usuwanie auta z bazy
+
+[33mcommit 79ac75c7b6c0e8df585036322583c593275b8b5b[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Fri Oct 13 10:48:36 2023 +0200
+
+    metoda dodawania motocykli
+
+[33mcommit 97cc7d4dcad5c796010a0178f70967db67e5f092[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Fri Oct 13 09:07:37 2023 +0200
+
+    dodawanie vana cd
+
+[33mcommit 070bbf7b1ed5adcfd63e4d23b7b833c5030bbe13[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Fri Oct 13 08:27:43 2023 +0200
+
+    dodawanie vana
+
+[33mcommit b24e21fd59b13191d073936331b54b3e97490740[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Fri Oct 13 08:12:33 2023 +0200
+
+    scanner w klasie dataredaer
+
+[33mcommit 153fe92f31a2ee9158ea6777cef93fc984156803[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Fri Oct 13 07:59:58 2023 +0200
+
+    klasa DataReader
+
+[33mcommit 92d85ccda255712512cbbc1e4757b52ed9621ea5[m[33m ([m[1;32mfeature/main-loop-methods[m[33m)[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Thu Oct 12 10:03:09 2023 +0200
+
+    mtoda dodawania samochodu
+
+[33mcommit 055242515d115de1ef43927ab73f6eb09470f46c[m[33m ([m[1;32mfeature/main-loop-exc[m[33m)[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Thu Oct 12 09:33:32 2023 +0200
+
+     metoda dodawanie auta
+
+[33mcommit c93c42c5930f97b96189ace13c3c2f118a34910a[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Thu Oct 12 09:24:35 2023 +0200
+
+    dodano exc do getOption
+
+[33mcommit 3c02c5e735e0b1a7540c3a96912bdbb3724c6ad1[m[33m ([m[1;32mmain-loop[m[33m)[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Wed Oct 11 08:10:44 2023 +0200
+
+    główna pętla aplikacji
+
+[33mcommit 57ee71a0d9581d9fbcac13bed6e466d4a0b01d61[m[33m ([m[1;32mfeature/model[m[33m)[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 10 10:42:12 2023 +0200
+
+    model wypozyczalni
+
+[33mcommit 2e909776d2bfc163c8553f2ac3267b6583da867f[m
+Author: BartKempa <bartekkempa@gmail.com>
+Date:   Tue Oct 10 08:18:24 2023 +0200
+
+    create project

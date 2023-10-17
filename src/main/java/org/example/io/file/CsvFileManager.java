@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.Collection;
 import java.util.Scanner;
 
-public class CsvFileManager {
+public class CsvFileManager implements FileManager {
     private static final String VEHICLE_FILE_NAME = "Rental.csv";
     private static final String USER_FILE_NAME = "Rental_users.csv";
 
@@ -127,5 +127,19 @@ public class CsvFileManager {
         int doorsNumber = Integer.parseInt(split[10]);
         int passengersNumber = Integer.parseInt(split[11]);
         return new Car(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers, carCategory, doorsNumber, passengersNumber);
+    }
+
+    @Override
+    public Rental importData() {
+        Rental rental = new Rental();
+        exportUsers(rental);
+        exportVehicle(rental);
+        return rental;
+    }
+
+    @Override
+    public void exportData(Rental rental) {
+        exportUsers(rental);
+        exportVehicle(rental);
     }
 }

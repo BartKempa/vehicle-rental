@@ -1,25 +1,44 @@
 package org.example.app;
 
+import org.example.exception.DataExportException;
+import org.example.exception.DataImportException;
+import org.example.exception.InvalidDataException;
 import org.example.exception.NoSuchOptionException;
 import org.example.io.ConsolePrinter;
 import org.example.io.DataReader;
+import org.example.io.file.FileManager;
+import org.example.io.file.FileManagerBuilder;
 import org.example.model.*;
 
 import java.util.Collection;
 import java.util.InputMismatchException;
 
 public class RentalControl {
-   private Rental rental = new Rental();
+
    private ConsolePrinter printer = new ConsolePrinter();
    private DataReader dataReader = new DataReader(printer);
+   private Rental rental;
+   private FileManager fileManager;
 
-   public void controlLoop(){
+    RentalControl() {
+        fileManager = new FileManagerBuilder(printer, dataReader).build();
+        try {
+            rental = fileManager.importData();
+            printer.printLine("Zaimportowano dane z pliku");
+        } catch (DataImportException | InvalidDataException e) {
+            printer.printLine(e.getMessage());
+            printer.printLine("Zainicjonowano nową bazę");
+            rental = new Rental();
+        }
+    }
+
+    public void controlLoop(){
         Option option;
         do {
             printOptions();
             option = getOption();
             switch (option){
-                case EXIT -> System.out.println("Koniec");
+                case EXIT -> exit();
                 case ADD_CAR -> addCar();
                 case ADD_TRUCK -> addTruck();
                 case ADD_MOTORCYCLE -> addMotorcycle();
@@ -35,6 +54,17 @@ public class RentalControl {
                 default -> System.out.println("Brak wybranej opcji, spróbuj raz jeszcze");
             }
         } while (option != Option.EXIT);
+    }
+
+    private void exit() {
+        try {
+            fileManager.exportData(rental);
+            printer.printLine("Eksport danych zakończony powodzeniem");
+        } catch (DataExportException e){
+            printer.printLine(e.getMessage());
+        }
+        printer.printLine("Koniec programu!!!");
+        dataReader.closeScanner();
     }
 
 
