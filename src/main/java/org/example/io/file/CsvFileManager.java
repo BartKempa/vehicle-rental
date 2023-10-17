@@ -25,8 +25,31 @@ public class CsvFileManager {
           throw new DataExportException("Błąd zapisu do pliku " + USER_FILE_NAME);
         }
     }
+    private void importUsers(Rental rental){
+        try (Scanner scanner = new Scanner(new File(USER_FILE_NAME))){
+            while (scanner.hasNextLine()){
+                String csvLine = scanner.nextLine();
+                User user = createUserFormCsvLine(csvLine);
+                rental.addUser(user);
+            }
+        } catch (FileNotFoundException e) {
+            throw new DataImportException("Błąd wczystania danych z pliku " + USER_FILE_NAME);
+        }
+    }
 
-    
+/*    public User(String firstName, String secondName, String pesel) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.pesel = pesel;
+    }*/
+
+    private User createUserFormCsvLine(String csvLine) {
+        String[] split = csvLine.split(";");
+        String firstName = split[0];
+        String secondName = split[1];
+        String pesel = split[2];
+        return new RentalUser(firstName, secondName, pesel);
+    }
 
     private void exportVehicle(Rental rental){
         Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
@@ -60,14 +83,14 @@ public class CsvFileManager {
         if (Car.TYPE.equals(type)){
             return createCarFromString(csvLine);
         } if (Motorcycle.TYPE.equals(type)){
-            return getMotorcycleFromString(csvLine);
+            return createMotorcycleFromString(csvLine);
         }  if (Truck.TYPE.equals(type)){
-            return getTruckFromString(csvLine);
+            return createTruckFromString(csvLine);
         }
         throw new InvalidDataException("Nieznany typo pojazdu " + type);
     }
 
-    private static Vehicle getTruckFromString(String csvLine) {
+    private Vehicle createTruckFromString(String csvLine) {
         String[] split = csvLine.split(";");
         String make = split[1];
         String model = split[2];
@@ -82,7 +105,7 @@ public class CsvFileManager {
         return new Truck(make, model, yearProduction, registrationNumber, transmission, engineSize, fuelType, kilometers, passengersNumber, loadCapacity);
     }
 
-    private Vehicle getMotorcycleFromString(String csvLine) {
+    private Vehicle createMotorcycleFromString(String csvLine) {
         String[] split = csvLine.split(";");
         String make = split[1];
         String model = split[2];
