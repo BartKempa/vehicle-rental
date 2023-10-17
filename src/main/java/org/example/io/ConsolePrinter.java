@@ -49,7 +49,15 @@ public class ConsolePrinter {
         }
     }
 
-    
+    public void printUsers(Collection<RentalUser> userCollection){
+        int counter = 0;
+        for (User user : userCollection) {
+           printLine(user.toString());
+           counter++;
+        } if (counter == 0) {
+            printLine("Brak użytkowników w bazie");
+        }
+    }
 
     public void printLine(String text){
         System.out.println(text);
