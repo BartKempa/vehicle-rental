@@ -50,7 +50,6 @@ public class Rental {
             vehicles.remove(vehicle.getRegistrationNumber());
             return true;
         } else {
-            System.out.println("Pojazd o podanym numerze rejestracyjnym już istanieje");
             return false;
         }
     }

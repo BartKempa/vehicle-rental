@@ -37,12 +37,6 @@ public class CsvFileManager {
         }
     }
 
-/*    public User(String firstName, String secondName, String pesel) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.pesel = pesel;
-    }*/
-
     private User createUserFormCsvLine(String csvLine) {
         String[] split = csvLine.split(";");
         String firstName = split[0];

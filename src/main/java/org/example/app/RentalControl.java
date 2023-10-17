@@ -11,8 +11,9 @@ import org.example.model.Truck;
 import java.util.InputMismatchException;
 
 public class RentalControl {
-    Rental rental = new Rental();
+   Rental rental = new Rental();
    DataReader dataReader = new DataReader();
+
    ConsolePrinter printer = new ConsolePrinter();
 
     public void controlLoop(){
