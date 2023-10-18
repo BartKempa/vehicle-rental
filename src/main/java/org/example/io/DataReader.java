@@ -1,8 +1,6 @@
 package org.example.io;
 
-import org.example.model.Car;
-import org.example.model.Motorcycle;
-import org.example.model.Truck;
+import org.example.model.*;
 
 import java.util.Scanner;
 
@@ -13,6 +11,16 @@ public class DataReader {
 
     public DataReader(ConsolePrinter printer) {
         this.printer = printer;
+    }
+
+    public RentalUser createUser(){
+        System.out.println("Imię:");
+        String firstName = scanner.nextLine();
+        System.out.println("Nazwisko:");
+        String secondName = scanner.nextLine();
+        System.out.println("PESEL:");
+        String pesel = scanner.nextLine();
+        return new RentalUser(firstName, secondName, pesel);
     }
 
     public Car createCar(){

@@ -48,13 +48,14 @@ public class RentalControl {
                 case DELETE_CAR -> deleteCar();
                 case DELETE_TRUCK -> System.out.println("usuń vana");
                 case DELETE_MOTORCYCLE -> System.out.println("usuń motor");
-                case ADD_CLIENT -> System.out.println("dodaj klienta");
+                case ADD_CLIENT -> addRentalUser();
                 case DISPLAY_CLIENTS -> printUsers();
                 case FIND_VEHICLE -> System.out.println("znajd auto");
                 default -> System.out.println("Brak wybranej opcji, spróbuj raz jeszcze");
             }
         } while (option != Option.EXIT);
     }
+
 
     private void exit() {
         try {
@@ -99,6 +100,15 @@ public class RentalControl {
             }
         } catch (InputMismatchException e) {
             System.out.println("Nie udało się utworzyć motcykla, błędne dane");
+        }
+    }
+
+    private void addRentalUser() {
+        try {
+            RentalUser user = dataReader.createUser();
+            rental.addUser(user);
+        } catch (InputMismatchException e){
+           printer.printLine("Nie udało się utworzyć klienta");
         }
     }
 

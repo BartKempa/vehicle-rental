@@ -1,8 +1,9 @@
 package org.example.model;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
-public abstract class Vehicle implements Serializable, CsvConvertible {
+public abstract class Vehicle implements Serializable, CsvConvertible, Comparable<Vehicle> {
     private String make;
     private String model;
     private int yearProduction;
@@ -99,5 +100,10 @@ public abstract class Vehicle implements Serializable, CsvConvertible {
                 "; " + kilometers;
     }
 
-  /*  public abstract String toCsv();*/
+    @Override
+    public int compareTo(Vehicle o) {
+        return o.yearProduction;
+    }
+
+    /*  public abstract String toCsv();*/
 }
