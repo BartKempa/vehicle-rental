@@ -1,6 +1,8 @@
 package org.example.model;
 
-public abstract class User implements CsvConvertible {
+import java.io.Serializable;
+
+public abstract class User implements Serializable, CsvConvertible {
     private String firstName;
     private String secondName;
     private String pesel;

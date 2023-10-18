@@ -18,10 +18,12 @@ public class FileManagerBuilder {
         FileType type = getFileType();
         switch (type) {
             case CSV -> {
-                return new SerializableFileManager();
+
+                return new CsvFileManager();
             }
             case SERIAL -> {
-                return new CsvFileManager();
+                return new SerializableFileManager();
+
             }
             default -> throw new NoSuchFileTypeException("Nieobsługiwany typ danych");
         }

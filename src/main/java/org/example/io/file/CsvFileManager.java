@@ -132,8 +132,8 @@ public class CsvFileManager implements FileManager {
     @Override
     public Rental importData() {
         Rental rental = new Rental();
-        exportUsers(rental);
-        exportVehicle(rental);
+        importUsers(rental);
+        importVehicle(rental);
         return rental;
     }
 

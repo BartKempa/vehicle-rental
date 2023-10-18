@@ -11,25 +11,25 @@ public class SerializableFileManager implements FileManager{
 
     @Override
     public Rental importData() {
-        Rental rental = new Rental();
-        try (FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
-             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)
+        try (
+                FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)
                 ){
-           rental = (Rental) objectInputStream.readObject();
+           return (Rental) objectInputStream.readObject();
         } catch (FileNotFoundException e) {
             throw new DataImportException("Brak pliku " + FILE_NAME);
         } catch (IOException e) {
-            throw new DataImportException("Błąd odczytu danych z pliku " + FILE_NAME);
+            throw new DataImportException("Błąd odczytu danych z plikuuu " + FILE_NAME);
         } catch (ClassNotFoundException e) {
             throw new DataImportException("Niezgodny typ danych z pliku " + FILE_NAME);
         }
-        return rental;
     }
 
     @Override
     public void exportData(Rental rental) {
-        try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
-             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)
+        try (
+                FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)
         ){
             objectOutputStream.writeObject(rental);
         } catch (FileNotFoundException e) {

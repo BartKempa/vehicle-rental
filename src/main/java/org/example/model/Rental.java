@@ -3,12 +3,13 @@ package org.example.model;
 import org.example.exception.UserAlreadyExist;
 import org.example.exception.VehicleAlreadyExist;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Rental {
+public class Rental implements Serializable {
     private Map<String, User> users = new HashMap<>();
     private Map<String, Vehicle> vehicles = new HashMap<>();
 

@@ -1,5 +1,6 @@
 package org.example.io.file;
 
 enum FileType {
-    CSV, SERIAL
+    CSV,
+    SERIAL
 }
