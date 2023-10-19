@@ -47,7 +47,7 @@ public class RentalControl {
                 case DISPLAY_MOTORCYCLES -> printMotorcycle();
                 case DELETE_CAR -> deleteCar();
                 case DELETE_TRUCK -> deleteTruck();
-                case DELETE_MOTORCYCLE -> System.out.println("usuń motor");
+                case DELETE_MOTORCYCLE -> deleteMotorcylce();
                 case ADD_CLIENT -> addRentalUser();
                 case DISPLAY_CLIENTS -> printUsers();
                 case FIND_VEHICLE -> System.out.println("znajdz auto");
@@ -56,9 +56,21 @@ public class RentalControl {
         } while (option != Option.EXIT);
     }
 
+    private void deleteMotorcylce() {
+        try {
+            Motorcycle motorcycle = dataReader.createMotorcycle();
+            if (rental.deleteVehicle(motorcycle))
+                System.out.println("Usunięto motoru z bazy");
+            else
+                System.out.println("Brak danego motoru w bazie");
+        } catch (InputMismatchException e){
+            System.out.println("Nie udało się utworzyć motocyklu, błędne dane");
+        }
+    }
+
     private void deleteTruck() {
         try {
-            Vehicle truck = dataReader.createTruck();
+            Truck truck = dataReader.createTruck();
             if (rental.deleteVehicle(truck))
                 System.out.println("Usunięto vana z bazy");
             else
