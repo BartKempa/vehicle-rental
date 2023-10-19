@@ -11,6 +11,7 @@ import org.example.io.file.FileManagerBuilder;
 import org.example.model.*;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.InputMismatchException;
 
 public class RentalControl {
@@ -70,17 +71,17 @@ public class RentalControl {
 
 
     private void printMotorcycle(){
-        Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        Collection<Vehicle> vehicleCollection = rental.sortVehicle();
         printer.printMotorcycle(vehicleCollection);
     }
 
     private void printCars(){
-        Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        Collection<Vehicle> vehicleCollection = rental.sortVehicle();
         printer.printCars(vehicleCollection);
     }
 
     private void printTrucks(){
-        Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        Collection<Vehicle> vehicleCollection = rental.sortVehicle();
         printer.printTrucks(vehicleCollection);
     }
 
