@@ -11,7 +11,6 @@ import org.example.io.file.FileManagerBuilder;
 import org.example.model.*;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.InputMismatchException;
 
 public class RentalControl {
@@ -47,16 +46,27 @@ public class RentalControl {
                 case DISPLAY_TRUCKS -> printTrucks();
                 case DISPLAY_MOTORCYCLES -> printMotorcycle();
                 case DELETE_CAR -> deleteCar();
-                case DELETE_TRUCK -> System.out.println("usuń vana");
+                case DELETE_TRUCK -> deleteTruck();
                 case DELETE_MOTORCYCLE -> System.out.println("usuń motor");
                 case ADD_CLIENT -> addRentalUser();
                 case DISPLAY_CLIENTS -> printUsers();
-                case FIND_VEHICLE -> System.out.println("znajd auto");
+                case FIND_VEHICLE -> System.out.println("znajdz auto");
                 default -> System.out.println("Brak wybranej opcji, spróbuj raz jeszcze");
             }
         } while (option != Option.EXIT);
     }
 
+    private void deleteTruck() {
+        try {
+            Vehicle truck = dataReader.createTruck();
+            if (rental.deleteVehicle(truck))
+                System.out.println("Usunięto vana z bazy");
+            else
+                System.out.println("Brak danego vana w bazie");
+        } catch (InputMismatchException e) {
+            System.out.println("Nie udało się utworzyć vana, błędne dane");
+        }
+    }
 
     private void exit() {
         try {
@@ -68,7 +78,6 @@ public class RentalControl {
         printer.printLine("Koniec programu!!!");
         dataReader.closeScanner();
     }
-
 
     private void printMotorcycle(){
         Collection<Vehicle> vehicleCollection = rental.sortVehicle();
@@ -89,7 +98,6 @@ public class RentalControl {
         Collection<User> userCollection = rental.getUsers().values();
         printer.printUsers(userCollection);
     }
-
 
     private void deleteCar() {
         try {
