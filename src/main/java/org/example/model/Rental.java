@@ -15,9 +15,9 @@ public class Rental implements Serializable {
     public Map<String, Vehicle> getVehicles() {
         return vehicles;
     }
-    public Collection<Vehicle> sortVehicle() {
-        ArrayList<Vehicle> list = new ArrayList<>(vehicles.values());
-        Collections.sort(list);
+    public Collection<Vehicle> sortVehicle(Comparator<Vehicle> comparator) {
+        List<Vehicle> list = new ArrayList<>(vehicles.values());
+        list.sort(comparator);
         return list;
     }
 
@@ -34,15 +34,6 @@ public class Rental implements Serializable {
             throw new VehicleAlreadyExist("Pojazd o podanym numerze rejestracyjnym już istanieje " + vehicle.getRegistrationNumber());
         } else {
             vehicles.put(vehicle.getRegistrationNumber(), vehicle);
-        }
-    }
-
-    public boolean removeVehicle(Vehicle vehicle){
-        if (vehicles.containsKey(vehicle.getRegistrationNumber())){
-            vehicles.remove(vehicle.getRegistrationNumber());
-            return true;
-        } else {
-            return false;
         }
     }
 

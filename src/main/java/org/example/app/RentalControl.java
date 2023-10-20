@@ -92,18 +92,22 @@ public class RentalControl {
     }
 
     private void printMotorcycle(){
-        Collection<Vehicle> vehicleCollection = rental.sortVehicle();
-        printer.printMotorcycle(vehicleCollection);
+        printer.printMotorcycle(rental.sortVehicle((v1, v2) -> v1.compareTo(v2)));
+        /*Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
+        vehicleCollection.so
+        printer.printMotorcycle(vehicleCollection);*/
     }
 
     private void printCars(){
-        Collection<Vehicle> vehicleCollection = rental.sortVehicle();
-        printer.printCars(vehicleCollection);
+        printer.printCars(rental.sortVehicle((v1, v2) -> v1.compareTo(v2)));
+       /* Collection<Vehicle> vehicleCollection = rental.sortVehicle();
+        printer.printCars(vehicleCollection);*/
     }
 
     private void printTrucks(){
-        Collection<Vehicle> vehicleCollection = rental.sortVehicle();
-        printer.printTrucks(vehicleCollection);
+        printer.printTrucks(rental.sortVehicle((v1, v2) -> v1.compareTo(v2)));
+        /*Collection<Vehicle> vehicleCollection = rental.sortVehicle();
+        printer.printTrucks(vehicleCollection);*/
     }
 
     private void printUsers(){
