@@ -54,13 +54,9 @@ public class ConsolePrinter {
     }
 
     public void printUsers(Collection<User> userCollection){
-        int counter = 0;
-        for (User user : userCollection) {
-           printLine(user.toString());
-           counter++;
-        } if (counter == 0) {
-            printLine("Brak użytkowników w bazie");
-        }
+        userCollection.stream()
+                .map(User::toString)
+                .forEach(System.out::println);
     }
 
     public void printLine(String text){
