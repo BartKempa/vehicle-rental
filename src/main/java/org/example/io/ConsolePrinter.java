@@ -44,17 +44,13 @@ public class ConsolePrinter {
     }
 
     public void printTrucks(Collection<Vehicle> vehicleCollection){
-        //Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
-        int counter = 0;
-        for (Vehicle vehicle : vehicleCollection) {
-            if (vehicle instanceof Truck){
-                printLine(vehicle.toString());
-                counter++;
-            }
-            if (counter == 0){
-                printLine("Brak vanów w bazie");
-            }
-        }
+        long count = vehicleCollection.stream()
+                .filter(v -> v instanceof Truck)
+                .map(Vehicle::toString)
+                .peek(this::printLine)
+                .count();
+        if (count == 0)
+            printLine("Brak vanów w bazie");
     }
 
     public void printUsers(Collection<User> userCollection){
