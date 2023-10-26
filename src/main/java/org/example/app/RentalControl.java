@@ -12,6 +12,7 @@ import org.example.model.*;
 
 import java.util.Collection;
 import java.util.InputMismatchException;
+import java.util.Optional;
 
 public class RentalControl {
 
@@ -50,10 +51,21 @@ public class RentalControl {
                 case DELETE_MOTORCYCLE -> deleteMotorcylce();
                 case ADD_CLIENT -> addRentalUser();
                 case DISPLAY_CLIENTS -> printUsers();
-                case FIND_VEHICLE -> System.out.println("znajdz auto");
+                case FIND_VEHICLE -> findVehicle();
                 default -> System.out.println("Brak wybranej opcji, spróbuj raz jeszcze");
             }
         } while (option != Option.EXIT);
+    }
+
+    private void findVehicle() {
+        printer.printLine("Podaj numer rejsetracyjny do wyczukiania:");
+        String registrationNumber = dataReader.getString();
+        rental.findByRegisterNumber(registrationNumber)
+                .map(Vehicle::toString)
+                .ifPresentOrElse(
+                        System.out::println,
+                        () -> System.out.println("Brak pojazdu o podanym numerze rejestracyjnym")
+                );
     }
 
     private void deleteMotorcylce() {

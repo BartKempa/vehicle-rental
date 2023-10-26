@@ -29,6 +29,10 @@ public class Rental implements Serializable {
         }
     }
 
+    public Optional<Vehicle> findByRegisterNumber(String registerNumber){
+        return Optional.ofNullable(vehicles.get(registerNumber));
+    }
+
     public void addVehicle(Vehicle vehicle){
         if (vehicles.containsKey(vehicle.getRegistrationNumber())){
             throw new VehicleAlreadyExist("Pojazd o podanym numerze rejestracyjnym już istanieje " + vehicle.getRegistrationNumber());
