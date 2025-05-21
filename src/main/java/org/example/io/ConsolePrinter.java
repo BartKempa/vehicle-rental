@@ -6,22 +6,6 @@ import java.util.Collection;
 
 public class ConsolePrinter {
 
-/*
-    public void printCars(Collection<Vehicle> vehicleCollection){
-        //Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
-        int counter = 0;
-        for (Vehicle vehicle : vehicleCollection) {
-            if (vehicle instanceof Car){
-                printLine(vehicle.toString());
-                counter++;
-            }
-            if (counter == 0){
-                printLine("Brak samochdów osobowych w bazie");
-            }
-        }
-    }
-*/
-
     public void printCars(Collection<Vehicle> vehicleCollection){
          long count = vehicleCollection.stream()
                 .filter(v -> v instanceof Car)
@@ -31,7 +15,6 @@ public class ConsolePrinter {
          if (count == 0)
              printLine("rak samochdów osobowych w bazie ");
     }
-
 
     public void printMotorcycle(Collection<Vehicle> vehicleCollection){
         long count = vehicleCollection.stream()

@@ -104,22 +104,15 @@ public class RentalControl {
     }
 
     private void printMotorcycle(){
-        printer.printMotorcycle(rental.sortVehicle(Vehicle::compareTo));
-        /*Collection<Vehicle> vehicleCollection = rental.getVehicles().values();
-        vehicleCollection.so
-        printer.printMotorcycle(vehicleCollection);*/
+        printer.printMotorcycle(rental.sortVehicle());
     }
 
     private void printCars(){
-        printer.printCars(rental.sortVehicle(Vehicle::compareTo));
-       /* Collection<Vehicle> vehicleCollection = rental.sortVehicle();
-        printer.printCars(vehicleCollection);*/
+        printer.printCars(rental.sortVehicle());
     }
 
     private void printTrucks(){
-        printer.printTrucks(rental.sortVehicle(Vehicle::compareTo));
-        /*Collection<Vehicle> vehicleCollection = rental.sortVehicle();
-        printer.printTrucks(vehicleCollection);*/
+        printer.printTrucks(rental.sortVehicle());
     }
 
     private void printUsers(){
@@ -215,6 +208,7 @@ public class RentalControl {
         DISPLAY_CLIENTS(11, "Wyświetlenie klientów"),
         FIND_VEHICLE(12, "Wyszukanie pojazdu");
 
+
         private final int number;
 
         private final String description;
@@ -237,6 +231,7 @@ public class RentalControl {
             return number +
                     ". " + description;
         }
+
         private static Option getOptionFromInt(int optionNumber) throws NoSuchOptionException {
             try {
                 return Option.values()[optionNumber];
@@ -245,7 +240,4 @@ public class RentalControl {
             }
         }
     }
-
-
-
 }

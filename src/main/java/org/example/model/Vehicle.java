@@ -102,13 +102,10 @@ public abstract class Vehicle implements Serializable, CsvConvertible, Comparabl
 
     @Override
     public int compareTo(Vehicle o) {
-        int makeCompare = make.compareTo(o.make);
-        if (makeCompare != 0)
-            return makeCompare;
-        int modelCompare = model.compareTo(o.model);
-        if (modelCompare != 0)
-            return modelCompare;
+        if (this.make.compareTo(o.make) != 0)
+            return this.make.compareTo(o.make);
+        if (this.model.compareTo(o.model) != 0)
+            return this.model.compareTo(o.model);
         return registrationNumber.compareTo(o.registrationNumber);
-
     }
 }

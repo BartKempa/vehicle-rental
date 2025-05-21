@@ -15,9 +15,9 @@ public class Rental implements Serializable {
     public Map<String, Vehicle> getVehicles() {
         return vehicles;
     }
-    public Collection<Vehicle> sortVehicle(Comparator<Vehicle> comparator) {
+    public Collection<Vehicle> sortVehicle() {
         List<Vehicle> list = new ArrayList<>(vehicles.values());
-        list.sort(comparator);
+        Collections.sort(list);
         return list;
     }
 

@@ -61,5 +61,4 @@ public class Car extends Vehicle{
                 getDoorsNumber() + ";" +
                 getPassengersNumber();
     }
-
 }
